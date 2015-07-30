@@ -113,7 +113,7 @@ import module namespace raygun = "http://raygun.io" at
 
 try
 { 
-  // some code causing error
+  error((), "Error", ("errorval1", "errorval2"))
 catch($error) 
 { 
   raygun:report-error($error)
