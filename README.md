@@ -5,9 +5,9 @@ RaygunML
 
 Installation
 ------------
-  - Copy raygun folder into your modules database, file system, or
+  - Copy RaygunML folder into your modules database, file system, or
     into MarkLogic/Modules/MarkLogic.
-  - If you placed raygun folder in the filesystem or modules database of
+  - If you placed RaygunML folder in the filesystem or modules database of
     one of your app servers, you can execute HTTP GET request on
     raygun-init.xqy (the script is meant to be executed by admin MarkLogic
     user) with the following parameters:
@@ -21,7 +21,7 @@ Installation
     - **database**: One or more database names. RaygunML init script will
       insert into the listed databases an xml config file in the following
       format: 
-      ```xml  
+      ```
       <raygun>
         <api-key>raygun-api-key</api-key>
         <mode>raygun-mode</mode>
@@ -57,14 +57,14 @@ Installation
   
 **Installation Examples**  
 Say I have an app server at port 8080 with modules in the file system and
-I placed raygun folder in the root ("/") directory of that server.
+I placed RaygunML folder in the root ("/") directory of that server.
 Here's an example of RaygunML installation without config.xml:
 ``` 
-http://localhost:8080/raygun/raygun-init.xqy?&api-key=apikey&mode=development&database=database1&database=database2&user=user1&user=user2&isconfig=false
+http://localhost:8080/RaygunML/raygun-init.xqy?&api-key=apikey&mode=development&database=database1&database=database2&user=user1&user=user2&isconfig=false
 ```
 Installation with config.xml.  
 ```
-http://localhost:8080/raygun/raygun-init.xqy?config=<raygun><api-key>apikey</api-key><mode>development</mode><usernames><user>user1</user><user>user2</user></usernames><databases><database>database1</database><database>database2</database></databases></raygun>&isconfig=true
+http://localhost:8080/RaygunML/raygun-init.xqy?config=<raygun><api-key>apikey</api-key><mode>development</mode><usernames><user>user1</user><user>user2</user></usernames><databases><database>database1</database><database>database2</database></databases></raygun>&isconfig=true
 ```
 
 Powershell script to initialize RaygunML. Make sure to place this 
@@ -72,7 +72,7 @@ Powershell script in the same directory as config.xml (see **config**).
 ```PowerShell
 $file = Get-Content config.xml
 $file = $file -replace '\s',''
-$req = "http://localhost:8080/raygun/raygun-init.xqy?config=" + $file +
+$req = "http://localhost:8080/RaygunML/raygun-init.xqy?config=" + $file +
         "&isconfig=true"
 $cred = Get-Credential
 
@@ -80,7 +80,7 @@ Write-Output $req
 Invoke-WebRequest -Uri $req -Credential $cred
 ```
 
-You can always initialize RaygunML in QConsole. Say you placed raygun
+You can always initialize RaygunML in QConsole. Say you placed RaygunML
 folder in .../MarkLogic/Modules/MarkLogic. You can execute the following
 code in QConsole to initialize RaygunML:
 ```XQuery
