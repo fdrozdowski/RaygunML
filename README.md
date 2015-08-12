@@ -87,7 +87,7 @@ code in QConsole to initialize RaygunML:
 xquery version "1.0-ml";
 
 import module namespace raygun-deploy = "http://raygun.io" at
-  "/MarkLogic/raygun/raygun-deploy.xqm";
+  "/MarkLogic/RaygunML/raygun-deploy.xqm";
 
 raygun-deploy:init(
   <raygun>
@@ -109,7 +109,7 @@ Usage
 In order to report an exception to Raygun, you can use the following code:
 ```XQuery  
 import module namespace raygun = "http://raygun.io" at
-  "/raygun/raygun.xqm";
+  "/RaygunML/raygun.xqm";
 
 try
 { 
